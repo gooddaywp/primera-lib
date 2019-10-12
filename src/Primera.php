@@ -10,9 +10,8 @@ use Sober\Controller\Loader;
 use duncan3dc\Laravel\BladeInstance;
 use Primera\Directives;
 use Primera\PrimeraBladeInstance;
-// use Illuminate\Support\Facades\Blade;
 
-// defined('WPINC') || exit;
+defined('WPINC') || exit;
 
 class Primera
 {
