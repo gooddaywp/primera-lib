@@ -1,0 +1,30 @@
+{
+    "name": "marcwiest/primera-package",
+    "description": "The package of the Primera WordPress theme.",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Wiest",
+            "email": "marc@marcwiest.com"
+        }
+    ],
+    "keywords": [
+        "wordpress", "wp", "blade"
+    ],
+    "require": {
+        "php": "^7.2",
+        "brain/hierarchy": "^2.4",
+        "soberwp/controller": "^2.1",
+        "duncan3dc/blade": "^4.8",
+        "symfony/var-dumper": "^4.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Primera\\": "src/"
+        },
+        "files": [
+            "index.php"
+        ]
+    }
+}
