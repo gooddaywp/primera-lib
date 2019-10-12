@@ -1,6 +1,7 @@
 {
     "name": "marcwiest/primera-package",
     "description": "The package of the Primera WordPress theme.",
+    "minimum-stability": "dev",
     "type": "package",
     "license": "MIT",
     "authors": [
