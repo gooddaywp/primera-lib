@@ -8,8 +8,6 @@ use Illuminate\Support\Collection;
 use Brain\Hierarchy\Hierarchy;
 use Sober\Controller\Loader;
 use duncan3dc\Laravel\BladeInstance;
-use Primera\Directives;
-use Primera\PrimeraBladeInstance;
 
 defined('WPINC') || exit;
 
@@ -17,7 +15,10 @@ class Primera
 {
     public $viewsDir;
     public $cacheDir;
-    public $primeraBladeInstance;
+    public $cssDir;
+    public $jsDir;
+    private $controllerLoader;
+    private $bladeInstance;
 
     /**
      * Create a new instance of the blade view factory.
@@ -26,22 +27,36 @@ class Primera
      * @param string $cache The default path for cached php
      * @param DirectivesInterface $directives
      */
-    public function __construct(string $path, string $cache)
+    public function __construct(array $config=[])
     {
-        $this->viewsDir = $path;
-        $this->cacheDir = $cache;
-        $this->primeraBladeInstance = new PrimeraBladeInstance($path, $cache);
+        $config = wp_parse_args($config, [
+            'viewsDir' => get_theme_file_path('source/views/'),
+            'cacheDir' => trailingslashit(wp_get_upload_dir()['basedir']).'blade-cache',
+            'cssDir' => get_theme_file_path('public/css/'),
+            'jsDir' => get_theme_file_path('public/js/'),
+        ]);
+
+        $this->viewsDir = (string) $config['viewsDir'];
+        $this->cacheDir = (string) $config['cacheDir'];
+        $this->cssDir = (string) $config['cssDir'];
+        $this->jsDir = (string) $config['jsDir'];
+
+        $this->controllerLoader = new Loader(new Hierarchy);
+        $this->bladeInstance = new BladeInstance($this->viewsDir, $this->cacheDir);
 
         // Force delete cached files if in debug mode.
         if (! empty(WP_DEBUG)) {
             $files = glob(trailingslashit($this->cacheDir) . '/*');
             foreach ($files as $file) {
-                is_file($file) && unlink($file);
+                is_file($file) && @unlink($file);
             }
         }
 
+        $this->_registerDirectives();
+        // $this->_registerComponents();
+
         // Inject controllers.
-        add_action('init', [$this, '_injectControllers']);
+        add_action('init', [$this, '_registerControllers']);
 
         // Filter template hierarchy.
         collect([
@@ -52,7 +67,10 @@ class Primera
         });
 
         // Render Blade templates.
-        add_filter('template_include', [$this, '_renderBladeTemplates'], PHP_INT_MAX);
+        add_filter('template_include', [$this, '_renderBladeTemplate'], PHP_INT_MAX - 1);
+
+        // Enqueue template scripts.
+        add_action('wp_enqueue_script', [$this, '_enqueueTemplateScripts'], PHP_INT_MAX - 1);
 
         /**
          * Updates the `$post` variable on each iteration of the loop.
@@ -66,6 +84,19 @@ class Primera
     public function getBladeInstance()
     {
         return $this->bladeInstance;
+    }
+
+    public function _registerDirectives()
+    {
+        $this->getBladeInstance()->directive('dump', function($args) {
+            // echo 'Line ' . __LINE__ . ' in ' . __FILE__;
+            // $backtrace = debug_backtrace();
+            return "<?php dump({$args}); ?>";
+        });
+
+        $this->getBladeInstance()->directive('dd', function($args) {
+            return "<?php dump({$args}); die(1); ?>";
+        });
     }
 
     /**
@@ -188,28 +219,31 @@ class Primera
         return $template;
     }
 
+    /**
+    * Enqueue template scripts.
+    */
     public function _enqueueTemplateScripts()
     {
-        // View name (same as blade template name).
-        $viewName = str_replace(['.blade','.php'], '', basename($GLOBALS['template']));
+        // File name (same as blade template name).
+        $fileName = str_replace(['.blade','.php'], '', basename($GLOBALS['template']));
 
-        if ( file_exists($path = get_theme_file_path("public/css/{$viewName}.css")) ) {
+        if (file_exists($path = get_theme_file_path("public/css/{$fileName}.css"))) {
             wp_enqueue_style(
-                $viewName,
-                get_theme_file_uri("public/css/{$viewName}.css"),
-                ['primeraFunctionPrefix'],
+                $fileName,
+                get_theme_file_uri("public/css/{$fileName}.css"),
+                [],
                 filemtime($path)
             );
         }
 
-        if ( file_exists($path = get_theme_file_path("public/js/{$viewName}.js")) ) {
+        if (file_exists($path = get_theme_file_path("public/js/{$fileName}.js"))) {
             wp_enqueue_script(
-                $viewName,
-                get_theme_file_uri("public/js/{$viewName}.js"),
-                ['primeraFunctionPrefix'],
+                $fileName,
+                get_theme_file_uri("public/js/{$fileName}.js"),
+                [],
                 filemtime($path)
             );
-            wp_script_add_data( $viewName, 'defer', true );
+            wp_script_add_data( $fileName, 'defer', true );
         }
     }
 }
