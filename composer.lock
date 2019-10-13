@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "267199dc4045769cf15304ff5439bc1d",
+    "content-hash": "479afe1cabd8511695dadb61adc1aed4",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -253,16 +253,16 @@
         },
         {
             "name": "duncan3dc/blade",
-            "version": "4.7.0",
+            "version": "4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/duncan3dc/blade.git",
-                "reference": "6975422f730976128b045d1417281d5773df0416"
+                "reference": "76e2abd7c22f4e54bac181e14bdaddc782fa0941"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/duncan3dc/blade/zipball/6975422f730976128b045d1417281d5773df0416",
-                "reference": "6975422f730976128b045d1417281d5773df0416",
+                "url": "https://api.github.com/repos/duncan3dc/blade/zipball/76e2abd7c22f4e54bac181e14bdaddc782fa0941",
+                "reference": "76e2abd7c22f4e54bac181e14bdaddc782fa0941",
                 "shasum": ""
             },
             "require": {
@@ -308,20 +308,20 @@
                 "templating",
                 "views"
             ],
-            "time": "2019-09-05T21:38:43+00:00"
+            "time": "2019-10-12T17:57:19+00:00"
         },
         {
             "name": "illuminate/container",
-            "version": "v6.1.0",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "d6d53581d463072538a96445e135ba86b49eb403"
+                "reference": "b36888780c1c483b3a9c2e6aa3d7545a969eb237"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/d6d53581d463072538a96445e135ba86b49eb403",
-                "reference": "d6d53581d463072538a96445e135ba86b49eb403",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/b36888780c1c483b3a9c2e6aa3d7545a969eb237",
+                "reference": "b36888780c1c483b3a9c2e6aa3d7545a969eb237",
                 "shasum": ""
             },
             "require": {
@@ -353,11 +353,11 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "https://laravel.com",
-            "time": "2019-09-11T20:47:02+00:00"
+            "time": "2019-10-02T12:56:51+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v6.1.0",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -401,7 +401,7 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v6.1.0",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -446,16 +446,16 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v6.1.0",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "bf9ad9d72ae379efaa307cac9d092586b5c646c9"
+                "reference": "9bb36281d2b6660ac59a1e7a0d5bf3c0f790448d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/bf9ad9d72ae379efaa307cac9d092586b5c646c9",
-                "reference": "bf9ad9d72ae379efaa307cac9d092586b5c646c9",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/9bb36281d2b6660ac59a1e7a0d5bf3c0f790448d",
+                "reference": "9bb36281d2b6660ac59a1e7a0d5bf3c0f790448d",
                 "shasum": ""
             },
             "require": {
@@ -468,7 +468,8 @@
                 "league/flysystem": "Required to use the Flysystem local and FTP drivers (^1.0).",
                 "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (^1.0).",
                 "league/flysystem-cached-adapter": "Required to use the Flysystem cache (^1.0).",
-                "league/flysystem-sftp": "Required to use the Flysystem SFTP driver (^1.0)."
+                "league/flysystem-sftp": "Required to use the Flysystem SFTP driver (^1.0).",
+                "psr/http-message": "Required to allow Storage::put to accept a StreamInterface (^1.0)"
             },
             "type": "library",
             "extra": {
@@ -493,11 +494,11 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "https://laravel.com",
-            "time": "2019-09-10T15:16:05+00:00"
+            "time": "2019-10-08T12:14:12+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v6.1.0",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
@@ -558,7 +559,7 @@
         },
         {
             "name": "illuminate/view",
-            "version": "v6.1.0",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
@@ -866,103 +867,17 @@
             "time": "2018-12-11T14:02:52+00:00"
         },
         {
-            "name": "spatie/laravel-blade-x",
-            "version": "2.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-blade-x.git",
-                "reference": "112ad46f216c339a4a049aaf9e3248e4043ef3bd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-blade-x/zipball/112ad46f216c339a4a049aaf9e3248e4043ef3bd",
-                "reference": "112ad46f216c339a4a049aaf9e3248e4043ef3bd",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/view": "~5.8.0|^6.0",
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "orchestra/testbench": "~3.8.0|^4.0",
-                "phpunit/phpunit": "^8.0",
-                "spatie/phpunit-snapshot-assertions": "^2.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\BladeX\\BladeXServiceProvider"
-                    ],
-                    "aliases": {
-                        "BladeX": "Spatie\\BladeX\\Facades\\BladeX"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\BladeX\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian De Deyne",
-                    "email": "sebastian@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Brent Roose",
-                    "email": "brent@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Ruben Van Assche",
-                    "email": "ruben@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Alex Vanderbist",
-                    "email": "alex@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Supercharged Blade components",
-            "homepage": "https://github.com/spatie/laravel-blade-x",
-            "keywords": [
-                "blade",
-                "components",
-                "html",
-                "laravel-blade-x",
-                "spatie"
-            ],
-            "time": "2019-09-04T10:58:23+00:00"
-        },
-        {
             "name": "symfony/debug",
-            "version": "v4.3.4",
+            "version": "v4.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "afcdea44a2e399c1e4b52246ec8d54c715393ced"
+                "reference": "cc5c1efd0edfcfd10b354750594a46b3dd2afbbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/afcdea44a2e399c1e4b52246ec8d54c715393ced",
-                "reference": "afcdea44a2e399c1e4b52246ec8d54c715393ced",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/cc5c1efd0edfcfd10b354750594a46b3dd2afbbe",
+                "reference": "cc5c1efd0edfcfd10b354750594a46b3dd2afbbe",
                 "shasum": ""
             },
             "require": {
@@ -1005,20 +920,20 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2019-08-20T14:27:59+00:00"
+            "time": "2019-09-19T15:51:53+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v4.3.4",
+            "version": "v4.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "86c1c929f0a4b24812e1eb109262fc3372c8e9f2"
+                "reference": "5e575faa95548d0586f6bedaeabec259714e44d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/86c1c929f0a4b24812e1eb109262fc3372c8e9f2",
-                "reference": "86c1c929f0a4b24812e1eb109262fc3372c8e9f2",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/5e575faa95548d0586f6bedaeabec259714e44d1",
+                "reference": "5e575faa95548d0586f6bedaeabec259714e44d1",
                 "shasum": ""
             },
             "require": {
@@ -1054,7 +969,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2019-08-14T12:26:46+00:00"
+            "time": "2019-09-16T11:29:48+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1172,16 +1087,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v4.3.4",
+            "version": "v4.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "28498169dd334095fa981827992f3a24d50fed0f"
+                "reference": "fe6193b066c457c144333c06aaa869a2d42a167f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/28498169dd334095fa981827992f3a24d50fed0f",
-                "reference": "28498169dd334095fa981827992f3a24d50fed0f",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/fe6193b066c457c144333c06aaa869a2d42a167f",
+                "reference": "fe6193b066c457c144333c06aaa869a2d42a167f",
                 "shasum": ""
             },
             "require": {
@@ -1244,20 +1159,20 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2019-08-26T08:55:16+00:00"
+            "time": "2019-09-27T14:37:39+00:00"
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v1.1.6",
+            "version": "v1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "325b17c24f3ee23cbecfa63ba809c6d89b5fa04a"
+                "reference": "364518c132c95642e530d9b2d217acbc2ccac3e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/325b17c24f3ee23cbecfa63ba809c6d89b5fa04a",
-                "reference": "325b17c24f3ee23cbecfa63ba809c6d89b5fa04a",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/364518c132c95642e530d9b2d217acbc2ccac3e6",
+                "reference": "364518c132c95642e530d9b2d217acbc2ccac3e6",
                 "shasum": ""
             },
             "require": {
@@ -1301,7 +1216,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2019-08-02T12:15:04+00:00"
+            "time": "2019-09-17T11:12:18+00:00"
         },
         {
             "name": "symfony/var-dumper",
