@@ -1,3 +1,3 @@
-# Primera Package
+Primera Package
 ---
 Currently under development.
