@@ -212,7 +212,7 @@ class Primera
             // Display blade template.
             echo $this->bladeInstance->render($template, $data);
 
-            // Always returns path to empty file.
+            // Must return path to empty file.
             return get_theme_file_path('./index.php');
         }
 
