@@ -16,7 +16,8 @@ use Illuminate\Support\Collection;
 
 function _render_woocommerce_blade_template($template_name, $template_path, $located, $args)
 {
-    if (! apply_filters('primera/renderWooBladeTemplate/bool', false)) {
+    // Only proceed if the empty source index file is being requested.
+    if ($located !== \get_theme_file_path('source/index.php')) {
         return;
     }
 
@@ -68,16 +69,11 @@ function _filter_woocommerce_template($template, $template_name, $args, $templat
     foreach ($paths as $file_paths) {
         foreach ($file_paths as $file) {
             if (\file_exists($file)) {
-                // Allows the blade template render function to render.
-                add_filter('primera/renderWooBladeTemplate/bool', '__return_true');
                 // Return path to empty file if blade template exists.
                 return \get_theme_file_path('source/index.php');
             }
         }
     }
-
-    // Disallows the blade template render function to render.
-    add_filter('primera/renderWooBladeTemplate/bool', '__return_false');
 
     return $template;
 }
