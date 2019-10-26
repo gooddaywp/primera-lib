@@ -10,7 +10,7 @@
         }
     ],
     "keywords": [
-        "wordpress", "wp", "blade"
+        "wordpress", "wp", "blade", "woo", "woocommerce"
     ],
     "require": {
         "php": "^7.2",
