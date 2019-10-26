@@ -9,7 +9,7 @@ use Brain\Hierarchy\Hierarchy;
 use Sober\Controller\Loader;
 use duncan3dc\Laravel\BladeInstance;
 
-defined('WPINC') || exit;
+defined('ABSPATH') || exit;
 
 class Primera
 {
@@ -73,13 +73,7 @@ class Primera
         // Display WooCommerce Blade templates.
         add_action('woocommerce_before_template_part', [$this, '_displayWooCommerceBladeTemplate'], PHP_INT_MAX - 1, 4);
 
-        /**
-         * Updates the `$post` variable on each iteration of the loop.
-         * Note: updated value is only available for subsequently loaded views, such as partials
-         */
-        // add_action('the_post', function ($post) {
-        //     sage('blade')->share('post', $post);
-        // });
+        add_action('the_post', [$this, '_refreshPostGlobal']);
     }
 
     public function getBladeInstance()
@@ -315,5 +309,14 @@ class Primera
         $template_name = basename($this->removeBladeFileExt($template_name));
 
         echo $this->renderBladeTemplate($template_name, $args);
+    }
+
+    /**
+    * Updates the `$post` variable on each iteration of the loop.
+    * NOTE: Updated value is only available for subsequently loaded views, such as partials.
+    */
+    public function _refreshPostGlobal()
+    {
+        $this->getBladeInstance()->share('post', get_post());
     }
 }
