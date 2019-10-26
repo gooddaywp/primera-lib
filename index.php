@@ -4,7 +4,7 @@ namespace Primera;
 
 use duncan3dc\Laravel\BladeInstance;
 
-defined('WPINC') || exit;
+defined('ABSPATH') || exit;
 
 function primera(array $config=[]): BladeInstance
 {
