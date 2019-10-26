@@ -47,11 +47,11 @@ class Primera
         // Force delete cached files if in debug mode.
         ! empty(WP_DEBUG) && $this->clearBladeTemplateCache();
 
-        // Enqueue template scripts.
-        add_action('wp_enqueue_script', [$this, '_enqueueTemplateScripts'], PHP_INT_MAX - 1);
-
         $this->_registerDirectives();
         // $this->_registerComponents();
+
+        // Enqueue template scripts.
+        add_action('wp_enqueue_script', [$this, '_enqueueTemplateScripts'], PHP_INT_MAX - 1);
 
         // Inject controllers.
         add_action('init', [$this, '_registerControllers']);
@@ -75,6 +75,17 @@ class Primera
 
         // Refresh global $post variable for each new loop iteration.
         add_action('the_post', [$this, '_refreshPostGlobal'], PHP_INT_MAX);
+
+        // TODO: Investigate if needed to output buffer echoed plugin hooks.
+        // collect(['get_header','wp_head'])->each(function ($tag) {
+        //     ob_start();
+        //     do_action($tag);
+        //     $output = ob_get_clean();
+        //     remove_all_actions($tag);
+        //     add_action($tag, function () use ($output) {
+        //         echo $output;
+        //     });
+        // });
     }
 
     public function getBladeInstance()
@@ -138,6 +149,19 @@ class Primera
         return false;
     }
 
+    public function _registerDirectives()
+    {
+        $this->getBladeInstance()->directive('dump', function($args) {
+            // echo 'Line ' . __LINE__ . ' in ' . __FILE__;
+            // $backtrace = debug_backtrace();
+            return "<?php dump({$args}); ?>";
+        });
+
+        $this->getBladeInstance()->directive('dd', function($args) {
+            return "<?php dump({$args}); die(1); ?>";
+        });
+    }
+
     /**
     * Enqueue template scripts.
     */
@@ -164,19 +188,6 @@ class Primera
             );
             wp_script_add_data($fileName, 'defer', true);
         }
-    }
-
-    public function _registerDirectives()
-    {
-        $this->getBladeInstance()->directive('dump', function($args) {
-            // echo 'Line ' . __LINE__ . ' in ' . __FILE__;
-            // $backtrace = debug_backtrace();
-            return "<?php dump({$args}); ?>";
-        });
-
-        $this->getBladeInstance()->directive('dd', function($args) {
-            return "<?php dump({$args}); die(1); ?>";
-        });
     }
 
     /**
@@ -264,6 +275,7 @@ class Primera
             ->all();
     }
 
+    // NOTE: See function `wc_get_template` in `woocommerce/includes/wc-core-functions.php:L207`.
     public function _filterWooCommerceTemplateInclude($template, $template_name, $args, $template_path, $default_path)
     {
         // Return path to empty file if blade template exists.
@@ -276,6 +288,7 @@ class Primera
 
     /**
     * Filter template include to render custom templates.
+    * NOTE: See function `wc_get_template` in `woocommerce/includes/wc-core-functions.php:L207`.
     */
     public function _displayWordPressBladeTemplate($template): string
     {
@@ -283,17 +296,6 @@ class Primera
         if (! $this->bladeTemplateExists($template)) {
             return $template;
         }
-
-        // TODO: Investigate if needed to output buffer echoed plugin hooks.
-        // collect(['get_header','wp_head'])->each(function ($tag) {
-        //     ob_start();
-        //     do_action($tag);
-        //     $output = ob_get_clean();
-        //     remove_all_actions($tag);
-        //     add_action($tag, function () use ($output) {
-        //         echo $output;
-        //     });
-        // });
 
         echo $this->renderBladeTemplate(basename($template));
 
