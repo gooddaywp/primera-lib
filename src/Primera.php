@@ -73,7 +73,8 @@ class Primera
         // Display WooCommerce Blade templates.
         add_action('woocommerce_before_template_part', [$this, '_displayWooCommerceBladeTemplate'], PHP_INT_MAX - 1, 4);
 
-        add_action('the_post', [$this, '_refreshPostGlobal']);
+        // Refresh global $post variable for each new loop iteration.
+        add_action('the_post', [$this, '_refreshPostGlobal'], PHP_INT_MAX);
     }
 
     public function getBladeInstance()
