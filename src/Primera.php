@@ -283,6 +283,7 @@ class Primera
             return $template;
         }
 
+        // TODO: Investigate if needed to output buffer echoed plugin hooks.
         // collect(['get_header','wp_head'])->each(function ($tag) {
         //     ob_start();
         //     do_action($tag);
