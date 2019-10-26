@@ -120,7 +120,7 @@ class Primera
 
     public function bladeTemplateExists(string $template_name, string $template_dir=''): bool
     {
-        $template_name = $this->removeBladeFileExt($template_name);
+        $template_name = basename($this->removeBladeFileExt($template_name));
 
         $template_dir = $template_dir ?: $this->viewsDir;
 
@@ -130,7 +130,7 @@ class Primera
             "{$template_dir}/{$template_name}.php",
         ];
 
-        if (file_exists($template_paths[0]) || file_exists($template_paths[1])) {
+        if (is_file($template_paths[0]) || is_file($template_paths[1])) {
             return true;
         }
 
