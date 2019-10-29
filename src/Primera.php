@@ -103,7 +103,8 @@ class Primera
 
     public function removeBladeFileExt(string $file_path): string
     {
-        return preg_replace('#\.(blade\.?)?(php)?$#', '', ltrim($file_path));
+        // return preg_replace('#\.(blade\.?)?(php)?$#', '', ltrim($file_path));
+        return trim(str_replace(['.blade','.php'], '', $file_path));
     }
 
     /**
