@@ -128,7 +128,7 @@ class Primera
 
         $template_data = $this->getControllerData($template_name, $add_data);
 
-        return $this->bladeInstance->render($template_name, $template_data);
+        return $this->getBladeInstance()->render($template_name, $template_data);
     }
 
     public function bladeTemplateExists(string $template_name, string $template_dir=''): bool
