@@ -171,8 +171,7 @@ class Primera
     */
     public function _enqueueTemplateScripts()
     {
-        // File name (same as blade template name).
-        // $fileName = str_replace(['.blade','.php'], '', basename($GLOBALS['template']));
+        // NOTE: File name is same as blade template name.
         $fileName = basename($this->removeBladeFileExt($GLOBALS['template']));
 
         if (file_exists($path = get_theme_file_path("public/css/{$fileName}.css"))) {
