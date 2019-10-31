@@ -290,6 +290,14 @@ class Primera
         return $template;
     }
 
+    // TODO:
+    // https://docs.easydigitaldownloads.com/article/1216-moving-edd-templates-to-your-theme
+    // https://github.com/easydigitaldownloads/easy-digital-downloads/blob/master/includes/template-functions.php#L744-L766
+    // Since the single download posts are using the default WP templates (e.g. `single-download.php`),
+    // they won't need to be filtered.
+    public function _filterEddTemplateInclude() {}
+    public function _displayEddBladeTemplate() {}
+
     /**
     * Filter template include to render custom templates.
     * NOTE: See function `wc_get_template` in `woocommerce/includes/wc-core-functions.php:L207`.
