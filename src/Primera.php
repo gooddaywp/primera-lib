@@ -76,6 +76,9 @@ class Primera
         // Refresh global $post variable for each new loop iteration.
         add_action('the_post', [$this, '_refreshPostGlobal'], PHP_INT_MAX);
 
+        // Allow defer/async attributes on enqueued/registered scripts.
+        add_filter( 'script_loader_tag', [$this, '_filterScriptLoaderTag'], 10, 2 );
+
         // TODO: Investigate if needed to output buffer echoed plugin hooks.
         // collect(['get_header','wp_head'])->each(function ($tag) {
         //     ob_start();
@@ -324,5 +327,38 @@ class Primera
     public function _refreshPostGlobal()
     {
         $this->getBladeInstance()->share('post', get_post());
+    }
+
+    /**
+    * Adds async/defer attributes to enqueued/registered scripts.
+    *
+    * If #12009 lands in WordPress, this function can no-op since it would be handled in core.
+    *
+    * Source: https://github.com/wprig/wprig/blob/master/dev/inc/template-functions.php#L41
+    *
+    * @since 1.0
+    * @link https://core.trac.wordpress.org/ticket/12009
+    * @param string $tag The script tag.
+    * @param string $handle The script handle.
+    * @return array
+    */
+    function _filterScriptLoaderTag($tag, $handle)
+    {
+        foreach (['async', 'defer'] as $attr) {
+
+            if (! wp_scripts()->get_data($handle, $attr)) {
+                continue;
+            }
+
+            // Prevent adding attribute when already added in #12009.
+            if (! preg_match(":\s$attr(=|>|\s):", $tag)) {
+                $tag = preg_replace(':(?=></script>):', " $attr", $tag, 1);
+            }
+
+            // Only allow async or defer, not both.
+            break;
+        }
+
+        return $tag;
     }
 }
