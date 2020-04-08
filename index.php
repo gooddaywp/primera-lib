@@ -22,14 +22,3 @@ function primera($config=null)
 
     return $primera;
 }
-
-// DEMO USAGE:
-// primera([
-//     'viewsDir' => get_theme_file_path('source/views/'),
-//     'cacheDir' => trailingslashit(wp_get_upload_dir()['basedir']).'blade-cache',
-// ]);
-// primera()->component('components.navbar');
-
-// NOTE: To render views via AJAX use:
-// primera()->render($template, $data);
-
