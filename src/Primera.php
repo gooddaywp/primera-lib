@@ -85,7 +85,7 @@ class Primera
         add_action('the_post', [$this, '_refreshPostGlobal'], PHP_INT_MAX);
 
         // Allow defer/async attributes on enqueued/registered scripts.
-        add_filter( 'script_loader_tag', [$this, '_filterScriptLoaderTag'], 10, 2 );
+        add_filter('script_loader_tag', [$this, '_filterScriptLoaderTag'], 10, 2);
 
         // TODO: Investigate if needed to output buffer echoed plugin hooks.
         // collect(['get_header','wp_head'])->each(function ($tag) {
