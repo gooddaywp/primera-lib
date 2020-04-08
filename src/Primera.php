@@ -59,7 +59,7 @@ class Primera
         // $this->_registerComponents();
 
         // Enqueue template scripts.
-        add_action('wp_enqueue_script', [$this, '_enqueueTemplateScripts'], PHP_INT_MAX - 1);
+        add_action('wp_enqueue_scripts', [$this, '_enqueueTemplateScripts'], PHP_INT_MAX - 1);
 
         // Inject controllers.
         add_action('init', [$this, '_registerControllers']);
