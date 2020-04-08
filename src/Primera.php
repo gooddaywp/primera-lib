@@ -179,26 +179,46 @@ class Primera
     */
     public function _enqueueTemplateScripts()
     {
-        // NOTE: File name is same as blade template name.
+        // NOTE: File name is same as blade template name but without `.blade.php` extension.
         $fileName = basename($this->removeBladeFileExt($GLOBALS['template']));
 
         if (file_exists($path = get_theme_file_path("public/css/{$fileName}.css"))) {
-            wp_enqueue_style(
-                $fileName,
+
+            $fileUrl = apply_filters(
+                'primera/template/script-file-url',
                 get_theme_file_uri("public/css/{$fileName}.css"),
-                [],
-                filemtime($path)
+                $fileName,
+                'css'
             );
+            $fileVersion = apply_filters(
+                'primera/template/script-file-version',
+                filemtime($path),
+                $path,
+                'css'
+            );
+            wp_enqueue_style($fileName, $fileUrl, [], $fileVersion);
         }
 
         if (file_exists($path = get_theme_file_path("public/js/{$fileName}.js"))) {
-            wp_enqueue_script(
-                $fileName,
+
+            $fileUrl = apply_filters(
+                'primera/template/script-file-url',
                 get_theme_file_uri("public/js/{$fileName}.js"),
-                [],
-                filemtime($path)
+                $fileName,
+                'js'
             );
-            wp_script_add_data($fileName, 'defer', true);
+            $fileVersion = apply_filters(
+                'primera/template/script-file-version',
+                filemtime($path),
+                $path,
+                'js'
+            );
+            wp_enqueue_script($fileName, $fileUrl, [], $fileVersion);
+            wp_script_add_data(
+                $fileName,
+                apply_filters('primera/template/js-file-defer-or-async', 'defer'),
+                true
+            );
         }
     }
 
