@@ -1,6 +1,7 @@
 {
     "name": "marcwiest/primera-package",
     "description": "The package of the Primera WordPress theme.",
+    "version": "1.0.0-beta",
     "type": "package",
     "license": "MIT",
     "authors": [
@@ -10,14 +11,15 @@
         }
     ],
     "keywords": [
-        "wordpress", "wp", "blade", "woo", "woocommerce"
+        "wordpress", "wp", "woocommerce", "blade", "MVC"
     ],
     "require": {
         "php": "^7.2",
-        "brain/hierarchy": "^2.4",
-        "soberwp/controller": "^2.1",
-        "duncan3dc/blade": "^4.8",
-        "symfony/var-dumper": "^4.3"
+        "brain/hierarchy": "2.4",
+        "duncan3dc/blade": "4.8",
+        "soberwp/controller": "2.1.1",
+        "symfony/var-dumper": "4.3.5",
+        "vlucas/phpdotenv": "^4.1"
     },
     "autoload": {
         "psr-4": {
@@ -26,5 +28,8 @@
         "files": [
             "index.php"
         ]
+    },
+    "config": {
+        "sort-packages": true
     }
 }
