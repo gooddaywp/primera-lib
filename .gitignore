@@ -1,3 +1,2 @@
-vendor
-# The lock file has no effect on the projects that are using this library.
 composer.lock
+vendor
