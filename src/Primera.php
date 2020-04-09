@@ -166,11 +166,11 @@ class Primera
         $this->getBladeInstance()->directive('dump', function($args) {
             // echo 'Line ' . __LINE__ . ' in ' . __FILE__;
             // $backtrace = debug_backtrace();
-            return "<?php dump({$args}); ?>";
+            return '<?php dump(' . $args . '); ?>';
         });
 
         $this->getBladeInstance()->directive('dd', function($args) {
-            return "<?php dump({$args}); die(1); ?>";
+            return '<?php dump(' . $args . '); die(1); ?>';
         });
     }
 
