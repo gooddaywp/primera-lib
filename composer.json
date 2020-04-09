@@ -15,10 +15,10 @@
     ],
     "require": {
         "php": "^7.2",
-        "brain/hierarchy": "2.4",
-        "duncan3dc/blade": "4.8",
-        "soberwp/controller": "2.1.1",
-        "symfony/var-dumper": "4.3.5"
+        "brain/hierarchy": "^2.4",
+        "duncan3dc/blade": "^4.8",
+        "soberwp/controller": "^2.1.1",
+        "symfony/var-dumper": "^4.3.5"
     },
     "autoload": {
         "psr-4": {
