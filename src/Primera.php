@@ -320,7 +320,7 @@ class Primera
 
     /**
     * Filter template include to render custom templates.
-    * NOTE: See function `wc_get_template` in `woocommerce/includes/wc-core-functions.php:L207`.
+    * NOTE: See function `wc_get_template` in `woocommerce/includes/wc-core-functions.php`.
     */
     public function _displayWordPressBladeTemplate($template): string
     {
