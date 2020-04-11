@@ -1,24 +1,21 @@
 <?php
 
-namespace Primera;
-
-use Exception;
-use duncan3dc\Laravel\BladeInstance;
+use Primera\Primera;
 
 defined('ABSPATH') || exit;
 
-function primera($config=null)
+function primera($arg=null): Primera
 {
     static $primera;
 
-    if (! $primera instanceof BladeInstance) {
-        $primera = new Primera($config ?? []);
+    if (! $primera instanceof Primera) {
+        $primera = new Primera((array) $arg);
     }
 
-    switch ($config ?? '') {
+    switch ($arg ?? '') {
         case 'blade':
             return $primera->getBladeInstance();
+        default:
+            return $primera;
     }
-
-    return $primera;
 }
