@@ -232,6 +232,16 @@ class Primera
 
             $controller = new $class;
 
+            // Register AJAX actions here.
+            if (method_exists($controller, '__ajax_actions')) {
+                $controller->__ajax_actions();
+            }
+
+            // Register REST routes here.
+            if (method_exists($controller, '__rest_routes')) {
+                add_action('rest_api_init', [$controller, '__rest_routes']);
+            }
+
             // Set the params required for template param.
             $controller->__setParams();
 
