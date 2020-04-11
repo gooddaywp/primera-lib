@@ -17,3 +17,20 @@ primera('blade')->component('components.navbar');
 primera('blade')->render($templateName, $dataArr);
 ```
 
+For local development integrate the following composer settings into your project.
+```json
+{
+    "require": {
+        "marcwiest/primera-package": "@dev"
+    },
+    "repositories": {
+        "dev-package": {
+            "type": "path",
+            "url": "~/code/primera-package",
+            "options": {
+                "symlink": true
+            }
+        }
+    }
+}
+```
