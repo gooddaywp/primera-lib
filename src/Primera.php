@@ -53,7 +53,11 @@ class Primera
         $this->bladeInstance = new BladeInstance($this->viewsDir, $this->cacheDir);
 
         // Force delete cached files if in debug mode.
+<<<<<<< HEAD
         defined('WP_DEBUG') && WP_DEBUG && $this->clearBladeTemplateCache();
+=======
+        defined(WP_DEBUG) && WP_DEBUG && $this->clearBladeTemplateCache();
+>>>>>>> 22a52c422d55b629b9d201b6fe3b6c07e6c2bca1
 
         $this->_registerDirectives();
         // $this->_registerComponents();
