@@ -1,8 +1,7 @@
 {
-    "name": "marcwiest/primera-package",
+    "name": "gooddaywp/primera-lib",
     "description": "The package of the Primera WordPress theme.",
     "version": "1.0.0-beta",
-    "type": "package",
     "license": "MIT",
     "authors": [
         {
@@ -17,7 +16,7 @@
         "php": "^7.2",
         "brain/hierarchy": "^2.4",
         "duncan3dc/blade": "^4.8",
-        "soberwp/controller": "^2.1.1",
+        "soberwp/controller": "^2.1.2",
         "symfony/var-dumper": "^4.3.5"
     },
     "autoload": {
