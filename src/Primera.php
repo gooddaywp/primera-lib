@@ -248,7 +248,7 @@ class Primera
             // Determine template location to expose data.
             $filterTag = "primera/template/{$controller->__getTemplateParam()}-data/data";
 
-            // Pass data to filter
+            // Pass data to filter.
             add_filter($filterTag, function($data) use ($class) {
 
                 // Recreate the class so that $post is included.
