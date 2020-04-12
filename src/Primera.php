@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Primera;
 
-use Illuminate\Support\Collection;
 use Brain\Hierarchy\Hierarchy;
-use Sober\Controller\Loader;
 use duncan3dc\Laravel\BladeInstance;
+use Illuminate\Support\Collection;
+use Primera\Dotenv;
+use Sober\Controller\Loader;
 
 defined('ABSPATH') || exit;
 
@@ -20,6 +21,7 @@ class Primera
     private $blankFileIncludePath;
     private $controllerLoader;
     private $bladeInstance;
+    private $dotenv;
 
     // TODO:
     // https://docs.easydigitaldownloads.com/article/1216-moving-edd-templates-to-your-theme
@@ -41,16 +43,19 @@ class Primera
             'cacheDir' => trailingslashit(wp_get_upload_dir()['basedir']).'blade-cache',
             'cssDir' => get_theme_file_path('public/css/'),
             'jsDir' => get_theme_file_path('public/js/'),
+            'envFile' => null,
         ]);
 
         $this->viewsDir = (string) $config['viewsDir'];
         $this->cacheDir = (string) $config['cacheDir'];
-        $this->cssDir = (string) $config['cssDir'];
-        $this->jsDir = (string) $config['jsDir'];
+        $this->cssDir   = (string) $config['cssDir'];
+        $this->jsDir    = (string) $config['jsDir'];
+        $this->envFile  = $config['envFile'];
 
         $this->blankFileIncludePath = trailingslashit(__DIR__) . 'index.php';
         $this->controllerLoader = new Loader(new Hierarchy);
         $this->bladeInstance = new BladeInstance($this->viewsDir, $this->cacheDir);
+        $this->dotenv = new Dotenv($this->envFile);
 
         // Force delete cached files if in debug mode.
         defined('WP_DEBUG') && WP_DEBUG && $this->clearBladeTemplateCache();
@@ -99,9 +104,14 @@ class Primera
         // });
     }
 
-    public function getBladeInstance()
+    public function getBladeInstance(): BladeInstance
     {
         return $this->bladeInstance;
+    }
+
+    public function getDotenv(): Dotenv
+    {
+        return $this->dotenv;
     }
 
     public function clearBladeTemplateCache(): void

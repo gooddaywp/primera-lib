@@ -4,7 +4,7 @@ use Primera\Primera;
 
 defined('ABSPATH') || exit;
 
-function primera($arg=null): Primera
+function primera($arg=null)
 {
     static $primera;
 
@@ -15,6 +15,8 @@ function primera($arg=null): Primera
     switch ($arg ?? '') {
         case 'blade':
             return $primera->getBladeInstance();
+        case 'env':
+            return $primera->getDotenv();
         default:
             return $primera;
     }
