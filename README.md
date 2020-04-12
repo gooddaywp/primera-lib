@@ -2,7 +2,6 @@
 
 Funtional, but currently under development.
 
-DEMO USAGE:
 ```php
 // Init:
 primera([
@@ -17,7 +16,8 @@ primera('blade')->component('components.navbar');
 primera('blade')->render($templateName, $dataArr);
 ```
 
-For local development integrate the following composer settings into your project.
+For local development integrate the following settings into your theme's the composer.json file.
+
 ```json
 {
     "require": {
