@@ -32,6 +32,7 @@ class Dotenv
         $value = Env::get($key, $default);
 
         if (is_string($value)) {
+            $value = trim($value);
             $value = $this->maybeFormatToArray($value);
         }
 
