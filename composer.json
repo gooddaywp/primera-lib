@@ -1,23 +1,35 @@
 {
     "name": "gooddaywp/primera-lib",
-    "description": "The package of the Primera WordPress theme.",
-    "version": "1.0.0-beta",
+    "description": "Primera-lib adds Laravel's Blade templating and view controllers to WordPress themes.",
+    "version": "0.1.0-beta",
     "license": "MIT",
     "authors": [
         {
+            "name": "Good Day WP",
+            "email": "marc@gooddaywp.com",
+            "homepage": "https://gooddaywp.com",
+            "role": "Publisher"
+        },
+        {
             "name": "Marc Wiest",
-            "email": "marc@marcwiest.com"
+            "email": "marc@marcwiest.com",
+            "homepage": "https://marcwiest.com",
+            "role": "Developer"
         }
     ],
+    "support": {
+        "docs": "https://github.com"
+    },
     "keywords": [
-        "wordpress", "wp", "woocommerce", "blade", "MVC"
+        "wp", "wordpress", "theme", "woocommerce", "laravel", "blade", "mix", "babel"
     ],
     "require": {
-        "php": "^7.2",
+        "php": ">=7.3",
         "brain/hierarchy": "^2.4",
         "duncan3dc/blade": "^4.8",
         "soberwp/controller": "^2.1.2",
-        "symfony/var-dumper": "^4.3.5"
+        "symfony/var-dumper": "^4.3.5",
+        "vlucas/phpdotenv": "^3.3.3"
     },
     "autoload": {
         "psr-4": {
