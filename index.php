@@ -12,7 +12,7 @@ function primera($arg=null)
         $primera = new Primera((array) $arg);
     }
 
-    switch ($arg ?? '') {
+    switch ($arg) {
         case 'blade':
             return $primera->getBladeInstance();
         case 'env':
