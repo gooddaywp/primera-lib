@@ -173,15 +173,32 @@ class Primera
 
     public function _registerDirectives()
     {
-        $this->getBladeInstance()->directive('dump', function($args) {
-            // echo 'Line ' . __LINE__ . ' in ' . __FILE__;
-            // $backtrace = debug_backtrace();
+        $this->getBladeInstance()->directive('dump', function($param) {
             return '<?php dump(' . $args . '); ?>';
         });
 
         $this->getBladeInstance()->directive('dd', function($args) {
             return '<?php dump(' . $args . '); die(1); ?>';
         });
+
+        $this->getBladeInstance()->directive('debug', function() {
+            return '<?php (new \Sober\Controller\Blade\Debugger(get_defined_vars())); ?>';
+        });
+
+        $this->getBladeInstance()->directive('code', function ($param) {
+            $param = ($param) ? $param : 'false';
+            return "<?php (new \Sober\Controller\Blade\Coder(get_defined_vars(), {$param})); ?>";
+        });
+
+        $this->getBladeInstance()->directive('codeif', function ($param) {
+            $param = ($param) ? $param : 'false';
+            return "<?php (new \Sober\Controller\Blade\Coder(get_defined_vars(), {$param}, true)); ?>";
+        });
+
+        // TODO: Integrate the below directives to replace the above.
+        // $this->getBladeInstance()->directive('dump', function ($param) {
+        //     return "PHP    (new Illuminate\Support\Debug\Dumper)->dump({$param});    PHP";
+        // });
     }
 
     /**
