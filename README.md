@@ -1,6 +1,8 @@
 # Primera Package
 
-Funtional, but currently under development. For an integration example please see https://github.com/gooddaywp/primera#readme.
+Funtional, but currently under development. This package is part of the Primera WordPress theme.
+
+For an integration example please see https://github.com/gooddaywp/primera#readme.
 
 ```php
 // Init:
