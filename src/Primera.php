@@ -177,27 +177,27 @@ class Primera
             return '<?php dump(' . $expr . '); ?>';
         });
 
-        $this->getBladeInstance()->directive('dd', function($args) {
-            return '<?php dump(' . $args . '); die(1); ?>';
+        $this->getBladeInstance()->directive('dd', function($expr) {
+            return '<?php dump(' . $expr . '); die(1); ?>';
         });
 
         $this->getBladeInstance()->directive('debug', function() {
             return '<?php (new \Sober\Controller\Blade\Debugger(get_defined_vars())); ?>';
         });
 
-        $this->getBladeInstance()->directive('code', function ($param) {
-            $param = ($param) ? $param : 'false';
-            return "<?php (new \Sober\Controller\Blade\Coder(get_defined_vars(), {$param})); ?>";
+        $this->getBladeInstance()->directive('code', function ($expr) {
+            $expr = ($expr) ? $expr : 'false';
+            return "<?php (new \Sober\Controller\Blade\Coder(get_defined_vars(), {$expr})); ?>";
         });
 
-        $this->getBladeInstance()->directive('codeif', function ($param) {
-            $param = ($param) ? $param : 'false';
-            return "<?php (new \Sober\Controller\Blade\Coder(get_defined_vars(), {$param}, true)); ?>";
+        $this->getBladeInstance()->directive('codeif', function ($expr) {
+            $expr = ($expr) ? $expr : 'false';
+            return "<?php (new \Sober\Controller\Blade\Coder(get_defined_vars(), {$expr}, true)); ?>";
         });
 
         // TODO: Integrate the below directives to replace the above.
-        // $this->getBladeInstance()->directive('dump', function ($param) {
-        //     return "PHP    (new Illuminate\Support\Debug\Dumper)->dump({$param});    PHP";
+        // $this->getBladeInstance()->directive('dump', function ($expr) {
+        //     return "PHP    (new Illuminate\Support\Debug\Dumper)->dump({$expr});    PHP";
         // });
     }
 
