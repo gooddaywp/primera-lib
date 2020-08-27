@@ -173,8 +173,8 @@ class Primera
 
     public function _registerDirectives()
     {
-        $this->getBladeInstance()->directive('dump', function($param) {
-            return '<?php dump(' . $args . '); ?>';
+        $this->getBladeInstance()->directive('dump', function($expr) {
+            return '<?php dump(' . $expr . '); ?>';
         });
 
         $this->getBladeInstance()->directive('dd', function($args) {
