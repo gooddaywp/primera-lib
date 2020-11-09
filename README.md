@@ -18,17 +18,17 @@ primera('blade')->component('components.navbar');
 primera('blade')->render($templateName, $dataArr);
 ```
 
-For local development integrate the following settings into your theme's the composer.json file.
+For local development integrate the following settings into your theme's composer.json file.
 
 ```json
 {
     "require": {
-        "marcwiest/primera-package": "@dev"
+        "gooddaywp/primera-lib": "@dev"
     },
     "repositories": {
         "dev-package": {
             "type": "path",
-            "url": "~/code/primera-package",
+            "url": "~/code/primera-lib",
             "options": {
                 "symlink": true
             }
